@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
+import Home from './components/Home/Home';
+import SearchForm from './containers/SearchForm/SearchForm';
 
 
 
@@ -19,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>This is my app</h1>
+      <Home />
+      <SearchForm />
     </div>
   );
 }
