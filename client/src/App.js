@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import Home from './components/Home/Home';
 
 
 
@@ -11,15 +12,15 @@ function App() {
       .then((res) => {
         console.log(res.data)
       }).catch((err) => {
-      console.log(err)
-    })
-  }, []) 
-   
+        console.log(err)
+      })
+  }, [])
+
 
 
   return (
     <div className="App">
-      <h1>This is my app</h1>
+      <Home />
     </div>
   );
 }
