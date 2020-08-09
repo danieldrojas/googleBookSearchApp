@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import API from '../../utils/API'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 const SearchForm = () => {
     const [book, setBook] = useState("")
@@ -25,17 +27,29 @@ const SearchForm = () => {
             // console.log(res.data.items[0].volumeInfo.title)
             const bookArray = [];
             res.data.items.map((book) => {
-                return bookArray.push(book.volumeInfo)
+                const { volumeInfo, id } = book
+                volumeInfo.id = id
+                return bookArray.push(volumeInfo)
+
             })
-            // console.log('this is my book array: ', bookArray)
+            console.log('this is my book array: ', bookArray)
 
             setFoundBooks(bookArray)
         }).catch((err) => {
             console.log(err)
         })
     }
+    const handleSavedBooks = (e) => {
+        console.log("you got ckicked")
+        axios
+            .get("/saved/books")
+            .then((res) => {
+            console.log(res)
+            }).catch((err) => {
+            console.log(err)
+        })
 
-
+    }
 
 
 
@@ -73,29 +87,35 @@ const SearchForm = () => {
                             {/* {console.log("this is the foundBooks", foundBooks.foundBooks)} */}
                             {foundBooks.length ? (
                                 foundBooks.map((book) => (
-                                    <div style={{ padding: "40px" }} className="row">
-                                        <div style={{ backgroundColor: "grey", padding: "40px" }} className="card-body">
+                                    <div className="row" style={{ padding: "40px" }} key={book.id}>
+                                        <div className="card-body" style={{ backgroundColor: "grey", padding: "40px" }}>
                                             <div className="row">
                                                 <div className="col">
                                                     <h5 className="card-title">{book.title}</h5>
                                                 </div>
                                                 <div className="col">
-                                                    <button>View</button>
+                                                    <a href={book.infoLink}>
+                                                        <button> View</button>
+                                                    </a>
+                                                    <Link onClick={() => {handleSavedBooks()}} to="/saved/books">
+                                                        <button >Save</button>
+
+                                                    </Link>
+
                                                 </div>
                                             </div>
                                             {console.log(book)}
                                             <h6 className="card-subtitle mb-2 text-muted">Written by {book.authors}</h6>
                                             <div className="row">
                                                 <div className="col-3 text-center">
-                                                    <img atl="book" src={book.imageLinks.smallThumbnail}></img>
+                                                    <img alt="book" src={book.imageLinks.smallThumbnail}></img>
                                                 </div>
                                                 <div className="col">
                                                     <p className="card-text">{book.description}</p>
                                                 </div>
 
                                             </div>
-                                            <a href="/" className="card-link">Card link</a>
-                                            <a href="/" className="card-link">Another link</a>
+
                                         </div>
                                     </div>
 

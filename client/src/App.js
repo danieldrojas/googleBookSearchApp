@@ -1,7 +1,8 @@
 import React from 'react';
 import SearchForm from './containers/SearchForm/SearchForm';
+import SavedBooks from './components/SavedBooks/SavedBooks'
 import NavBar from './components/NavBar/NavBar';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 
 function App() {
@@ -9,10 +10,11 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        <SearchForm />
+        <Switch>
+          <Route exact path="/" component={SearchForm} />        
+          <Route path="/saved/books" component={SavedBooks} />   
+        </Switch>
       </Router>
-
-
     </div>
   );
 }
