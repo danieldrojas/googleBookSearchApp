@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import API from '../../utils/API'
-import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const SearchForm = () => {
@@ -31,7 +30,7 @@ const SearchForm = () => {
                 return bookArray.push(volumeInfo)
 
             })
-            console.log('this is my book array: ', bookArray)
+            // console.log('this is my book array: ', bookArray)
 
             setFoundBooks(bookArray)
         }).catch((err) => {
@@ -41,9 +40,9 @@ const SearchForm = () => {
     const handleSavedBooks = (e, book) => {
         e.preventDefault()
 
-        console.log("you got ckicked")
-        console.log("this is may event: ", e.target.id)
-        console.log('this is our book to save', book)
+        // console.log("you got ckicked")
+        // console.log("this is may event: ", e.target.id)
+        // console.log('this is our book to save', book)
         
         var newBook = {
             title: book.title ,
@@ -56,23 +55,8 @@ const SearchForm = () => {
         console.log(newBook)
         axios.post("http://localhost:3001/api/books/", newBook).then(function () { 
 
-        })
-
-        
-        let savedBooksArray = [];
-    //   savedBooksArray =  foundBooks.filter((book) => e.target.id === book.id)
-    //     console.log("this is savedbooks array:", savedBooksArray)
-    //    // const savedBooksArray = []
-    //     setSaveBooks(savedBooksArray)          
-        
-        
-
-    
+        }) 
     }
-    // console.log("saveBooks: ", saveBooks) 
-
-
-
 
     return (
         <div>
@@ -115,7 +99,7 @@ const SearchForm = () => {
                                                     <h5 className="card-title">{book.title}</h5>
                                                 </div>
                                                 <div className="col">
-                                                    <a href={book.infoLink}>
+                                                    <a href={book.infoLink} target="_blanck">
                                                         <button> View</button>
                                                     </a>
                                                     <button

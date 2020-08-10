@@ -7,31 +7,54 @@ const Save = () => {
 
 
     useEffect(() => {
+        loadBooks();
+    }, []);
+
+    const loadBooks = () => {
         axios
             .get("/api/books")
             .then((res) => {
                 console.log("this is the save page: ", res)
                 setBooks(res.data.data)
             })
-    }, []);
+    }
+  
+    const handleDetele = (e) => {
+        e.preventDefault();
+        console.log("got clicked id: ", e.target.id)
+        axios
+            .delete("/api/books/" + e.target.id)
+            .then((res) => {
+                console.log("this was deleted from database: ", res)
+                loadBooks();
+
+             
+            }).catch((err) => {
+                console.log(err)
+            })
+    }
 
     return (
         <div>
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        {books.length ? (
+                        {
                             books.map((book) => (
-                                <div className="row" style={{ padding: "40px" }} key={book.id}>
-                                    <div className="card-body" style={{ backgroundColor: "grey", padding: "40px" }}>
+                                <div className="row" style={{ padding: "40px" }} key={book._id} >
+{                                    console.log("??????/", book)
+}                                    <div className="card-body" key={book.id} style={{ backgroundColor: "grey", padding: "40px" }}>
                                         <div className="row">
                                             <div className="col">
                                                 <h5 className="card-title">{book.title}</h5>
                                             </div>
                                             <div className="col">
-                                                <a href={book.infoLink}>
+                                                <a href={book.link} target="_blanck">
                                                     <button> View</button>
                                                 </a>
+
+                                                <button id={book._id} onClick={(e) => {handleDetele(e)}} > Delete</button>
+
                                                 {/* <button
                                                     id={book.id}
 
@@ -58,8 +81,7 @@ const Save = () => {
 
                             ))
 
-                        ) : (<h3>No books saved</h3>
-                            )}
+                        }
 
                     </div>
                 </div>
