@@ -1,28 +1,20 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
-import Home from './components/Home/Home';
+import React from 'react';
 import SearchForm from './containers/SearchForm/SearchForm';
-
+import Save from './containers/Save/Save'
+import NavBar from './components/NavBar/NavBar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 
 function App() {
-
-  useEffect(() => {
-    axios
-      .get("/api/config")
-      .then((res) => {
-        console.log(res.data)
-      }).catch((err) => {
-        console.log(err)
-      })
-  }, [])
-
-
-
   return (
     <div className="App">
-      <Home />
-      <SearchForm />
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={SearchForm} />        
+          <Route path="/api/books" component={Save} />   
+        </Switch>
+      </Router>
     </div>
   );
 }
