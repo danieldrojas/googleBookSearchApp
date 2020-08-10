@@ -26,7 +26,6 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        console.log('we hit hte create route in the controller!!!', req.body)
         db.Book.create(req.body).then(addedBook => {
             res.json({
                 error: false,

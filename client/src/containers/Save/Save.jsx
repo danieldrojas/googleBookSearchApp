@@ -14,7 +14,7 @@ const Save = () => {
         axios
             .get("/api/books")
             .then((res) => {
-                console.log("this is the save page: ", res)
+                // console.log("this is the save page: ", res)
                 setBooks(res.data.data)
             })
     }
@@ -55,16 +55,8 @@ const Save = () => {
 
                                                 <button id={book._id} onClick={(e) => {handleDetele(e)}} > Delete</button>
 
-                                                {/* <button
-                                                    id={book.id}
-
-                                                    onClick={(e) => { handleSavedBooks(e, book) }} >Save</button> */}
-
-                                                {/* </Link> */}
-
                                             </div>
                                         </div>
-                                        {/* {console.log(book)} */}
                                         <h6 className="card-subtitle mb-2 text-muted">Written by {book.authors}</h6>
                                         <div className="row">
                                             <div className="col-3 text-center">
@@ -73,14 +65,10 @@ const Save = () => {
                                             <div className="col">
                                                 <p className="card-text">{book.description}</p>
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
-
                             ))
-
                         }
 
                     </div>
