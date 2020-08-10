@@ -100,9 +100,9 @@ const SearchForm = () => {
                                                 </div>
                                                 <div className="col">
                                                     <a href={book.infoLink} target="_blanck">
-                                                        <button> View</button>
+                                                        <button className="btn btn-info"> View</button>
                                                     </a>
-                                                    <button
+                                                    <button className="btn btn-info mx-2"
                                                         id={book.id}
                                                         
                                                         onClick={(e) => { handleSavedBooks(e, book) }} >Save</button>
@@ -112,7 +112,7 @@ const SearchForm = () => {
                                                 </div>
                                             </div>
                                             {/* {console.log(book)} */}
-                                            <h6 className="card-subtitle mb-2 text-muted">Written by {book.authors}</h6>
+                                            <h6 className="card-subtitle mb-2 text-muted" >Written by {book.authors}</h6>
                                             <div className="row">
                                                 <div className="col-3 text-center">
                                                     <img alt="book" src={book.imageLinks.smallThumbnail}></img>

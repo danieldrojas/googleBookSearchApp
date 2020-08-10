@@ -15,9 +15,14 @@
 
 Open deployed link on browser
 
+[Deployed](https://gt-google-book-search.herokuapp.com/)
+
+[Github](https://github.com/danieldrojas/googleBookSearchApp)
+
 ## Usage 
 User will be able to search books from the application from the google library.
 
+![main](./client/src/utils/images/book-search.png)
 
 ## Credits
 
