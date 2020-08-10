@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchForm from './containers/SearchForm/SearchForm';
-import SavedBooks from './components/SavedBooks/SavedBooks'
+import Save from './containers/Save/Save'
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={SearchForm} />        
-          <Route path="/saved/books" component={SavedBooks} />   
+          <Route path="/api/books" component={Save} />   
         </Switch>
       </Router>
     </div>

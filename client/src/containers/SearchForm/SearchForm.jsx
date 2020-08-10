@@ -6,8 +6,7 @@ import axios from 'axios'
 const SearchForm = () => {
     const [book, setBook] = useState("")
     const [foundBooks, setFoundBooks] = useState([])
-
-
+    // const [saveBooks, setSaveBooks] = useState([])
     // Load all books and store them with setBooks
     // useEffect(() => {
     //     loadBooks()
@@ -39,17 +38,39 @@ const SearchForm = () => {
             console.log(err)
         })
     }
-    const handleSavedBooks = (e) => {
+    const handleSavedBooks = (e, book) => {
+        e.preventDefault()
+
         console.log("you got ckicked")
-        axios
-            .get("/saved/books")
-            .then((res) => {
-            console.log(res)
-            }).catch((err) => {
-            console.log(err)
+        console.log("this is may event: ", e.target.id)
+        console.log('this is our book to save', book)
+        
+        var newBook = {
+            title: book.title ,
+            authors: book.authors,
+            description: book.description,
+            image: book.imageLinks.smallThumbnail,
+            link: book.infoLink,
+
+        }
+        console.log(newBook)
+        axios.post("http://localhost:3001/api/books/", newBook).then(function () { 
+
         })
 
+        
+        let savedBooksArray = [];
+    //   savedBooksArray =  foundBooks.filter((book) => e.target.id === book.id)
+    //     console.log("this is savedbooks array:", savedBooksArray)
+    //    // const savedBooksArray = []
+    //     setSaveBooks(savedBooksArray)          
+        
+        
+
+    
     }
+    // console.log("saveBooks: ", saveBooks) 
+
 
 
 
@@ -97,14 +118,16 @@ const SearchForm = () => {
                                                     <a href={book.infoLink}>
                                                         <button> View</button>
                                                     </a>
-                                                    <Link onClick={() => {handleSavedBooks()}} to="/saved/books">
-                                                        <button >Save</button>
+                                                    <button
+                                                        id={book.id}
+                                                        
+                                                        onClick={(e) => { handleSavedBooks(e, book) }} >Save</button>
 
-                                                    </Link>
+                                                    {/* </Link> */}
 
                                                 </div>
                                             </div>
-                                            {console.log(book)}
+                                            {/* {console.log(book)} */}
                                             <h6 className="card-subtitle mb-2 text-muted">Written by {book.authors}</h6>
                                             <div className="row">
                                                 <div className="col-3 text-center">
