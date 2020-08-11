@@ -53,7 +53,7 @@ const SearchForm = () => {
 
         }
         console.log(newBook)
-        axios.post("http://localhost:3001/api/books/", newBook).then(function () {
+        axios.post("/api/books", newBook).then(function () {
 
         })
     }

@@ -39,11 +39,11 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes)
 
-app.get("/api/config", (req, res) => {
-    res.json({
-        success: true
-    });
-})
+// app.get("/api/config", (req, res) => {
+//     res.json({
+//         success: true
+//     });
+// })
 
 //when no other route matches, this get hit
 // app.get("*", (req, res) => {
