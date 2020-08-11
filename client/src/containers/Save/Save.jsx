@@ -42,7 +42,7 @@ const Save = () => {
                         {
                             books.map((book) => (
                                 <div className="row" style={{ padding: "40px" }} key={book._id} >
-                                    <div className="card-body" key={book.id} style={{ backgroundColor: "grey", padding: "40px" }}>
+                                    <div className="card-body" key={book.id} style={{ backgroundColor: "#f8f9fa", padding: "40px" }}>
                                         <div className="row">
                                             <div className="col">
                                                 <h5 className="card-title">{book.title} </h5>
