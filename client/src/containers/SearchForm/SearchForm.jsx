@@ -43,9 +43,9 @@ const SearchForm = () => {
         // console.log("you got ckicked")
         // console.log("this is may event: ", e.target.id)
         // console.log('this is our book to save', book)
-        
+
         var newBook = {
-            title: book.title ,
+            title: book.title,
             authors: book.authors,
             description: book.description,
             image: book.imageLinks.smallThumbnail,
@@ -53,9 +53,9 @@ const SearchForm = () => {
 
         }
         console.log(newBook)
-        axios.post("http://localhost:3001/api/books/", newBook).then(function () { 
+        axios.post("http://localhost:3001/api/books/", newBook).then(function () {
 
-        }) 
+        })
     }
 
     return (
@@ -93,7 +93,8 @@ const SearchForm = () => {
                             {foundBooks.length ? (
                                 foundBooks.map((book) => (
                                     <div className="row" style={{ padding: "40px" }} key={book.id}>
-                                        <div className="card-body" style={{ backgroundColor: "grey", padding: "40px" }}>
+                                        <div className="card-body" style={{
+                                            backgroundColor: "#f8f9fa", padding: "40px"}}>
                                             <div className="row">
                                                 <div className="col">
                                                     <h5 className="card-title">{book.title}</h5>
@@ -104,7 +105,7 @@ const SearchForm = () => {
                                                     </a>
                                                     <button className="btn btn-info mx-2"
                                                         id={book.id}
-                                                        
+
                                                         onClick={(e) => { handleSavedBooks(e, book) }} >Save</button>
 
                                                     {/* </Link> */}
