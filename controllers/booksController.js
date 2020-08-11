@@ -5,7 +5,8 @@ const db = require("../models")
 
 module.exports = {
     findAll: function (req, res) {
-        db.Book.find({}).then(dbBooks => {
+        db.Book.find({})
+            .then(dbBooks => {
             res.json({
                 error: false,
                 data: dbBooks,

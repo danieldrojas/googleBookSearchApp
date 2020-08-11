@@ -4,7 +4,7 @@ const router = express.Router();
 const booksControllers = require("../controllers/booksController");
 
 router
-    .route("/api/books/")
+    .route("/api/books")
     .post(booksControllers.create)
     .get(booksControllers.findAll)
 
