@@ -51,7 +51,7 @@ app.get("/api/config", (req, res) => {
 // })
 
 mongoose
-    .connect(process.env.MONGOD_URI || "mongodb://localhost/googlebooks",
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
         {
             useNewUrlParser: true,
             useUnifiedTopology: true
